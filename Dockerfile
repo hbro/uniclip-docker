@@ -3,7 +3,7 @@ FROM debian:bullseye-slim as downloader
 
 # Install curl and tar
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl tar && \
+    curl tar ca-certificates && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
@@ -11,7 +11,6 @@ WORKDIR /app
 
 # Download and unpack the latest Uniclip release
 ARG UNICLIP_VERSION=2.3.6
-RUN echo "URL = https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz"
 RUN curl -svL https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz -o uniclip_archive.tar.gz
 RUN ls
 RUN tar -xzf uniclip_archive.tar.gz
