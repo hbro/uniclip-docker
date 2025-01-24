@@ -3,7 +3,7 @@ FROM debian:bullseye-slim as downloader
 
 # Install curl and tar
 RUN apt-get update && apt-get install -y --no-install-recommends \
-    curl tar ca-certificates && \
+    curl tar ca-certificates tree && \
     rm -rf /var/lib/apt/lists/*
 
 # Set working directory
