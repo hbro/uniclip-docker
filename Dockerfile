@@ -12,8 +12,8 @@ WORKDIR /app
 # Download and unpack the latest Uniclip release
 ARG UNICLIP_VERSION=2.3.6
 RUN curl -svL https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz -o uniclip_archive.tar.gz
-RUN ls
 RUN tar -xzf uniclip_archive.tar.gz
+RUN tree
 RUN mv uniclip_archive/uniclip uniclip
 RUN chmod +x uniclip
 RUN rm -rf uniclip_archive*
