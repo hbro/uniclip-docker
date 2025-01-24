@@ -11,11 +11,12 @@ WORKDIR /app
 
 # Download and unpack the latest Uniclip release
 ARG UNICLIP_VERSION=2.3.6
-RUN curl -sL https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz -o uniclip.tar.gz && \
-    tar -xzf uniclip.tar.gz && \
-    mv uniclip_*/uniclip uniclip && \
-    chmod +x uniclip && \
-    rm uniclip.tar.gz
+RUN curl -sL https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz -o uniclip_archive.tar.gz
+RUN ls
+RUN tar -xzf uniclip_archive.tar.gz
+RUN mv uniclip_archive/uniclip uniclip
+RUN chmod +x uniclip
+RUN rm -rf uniclip_archive*
 
 # Stage 2: Build the clean final image
 FROM debian:bullseye-slim
