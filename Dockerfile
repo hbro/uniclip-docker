@@ -13,7 +13,7 @@ WORKDIR /app
 ARG UNICLIP_VERSION=2.3.6
 RUN curl -sL https://github.com/quackduck/uniclip/releases/download/v${UNICLIP_VERSION}/uniclip_${UNICLIP_VERSION}_Linux_x86_64.tar.gz -o uniclip.tar.gz && \
     tar -xzf uniclip.tar.gz && \
-    mv uniclip_*\uniclip ..\uniclip && \
+    mv uniclip_*/uniclip ../uniclip && \
     chmod +x uniclip && \
     rm uniclip.tar.gz
 
